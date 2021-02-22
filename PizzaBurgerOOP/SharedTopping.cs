@@ -3,8 +3,11 @@ namespace PizzaBurgerOOP
 {
     public class SharedTopping
     {
-        public SharedTopping()
+        public string mySharedTopping;
+
+        public void DoThis()
         {
+
         }
     }
 }
