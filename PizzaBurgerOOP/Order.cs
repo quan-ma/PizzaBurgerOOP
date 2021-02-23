@@ -5,6 +5,8 @@ namespace PizzaBurgerOOP
 {
     public class Order
     {
+        private decimal subtotal = 0;
+
         private List<Burger> myBurgers = new List<Burger>();
         private List<Pizza> myPizzas = new List<Pizza>();
         private List<Extra> myExtras = new List<Extra>();
@@ -33,6 +35,25 @@ namespace PizzaBurgerOOP
         public void AddToOrder(Extra _extra)
         {
             myExtras.Add(_extra);
+        }
+
+        public void Checkout()
+        {
+            if(myPizzas.Count>0)
+            {
+                Console.WriteLine($"You ordered {myPizzas.Count} pizza(s)");
+                //int i = 0;
+                foreach(var p in myPizzas)
+                {
+                    for(int i = 0; i < p.MyPizzaToppings.Count; i++)
+                    {
+                        Console.WriteLine($"Topping ${p.MyPizzaToppings[i].name}, Price ${p.MyPizzaToppings[i].price}");
+                        subtotal += p.MyPizzaToppings[i].price;
+                    }
+                }
+            }
+
+            Console.WriteLine($"Your subtotal is ${subtotal}");
         }
     }
 }

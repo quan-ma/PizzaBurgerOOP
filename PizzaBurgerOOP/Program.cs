@@ -13,6 +13,7 @@ namespace PizzaBurgerOOP
             p.AddTopping("Skittles", 5.5m);
             Order o = new Order();
             o.AddToOrder(p);
+            o.Checkout();
         }
     }
 }
