@@ -7,23 +7,12 @@ namespace PizzaBurgerOOP
     {
         public string name;
 
+        public decimal price;
+
         public PizzaTopping()
         {
-            //List<PizzaTopping> availablePizzaToppings = new List<PizzaTopping>()
-            //{
-            //    new PizzaTopping
-            //    {
-            //        name = "Pepperoni"
-            //    },
-            //    new PizzaTopping
-            //    {
-            //        name = "Sausage"
-            //    },
-            //    new PizzaTopping
-            //    {
-            //        name = "Mushroom"
-            //    }
-            //};
+
         }
+
     }     
 }

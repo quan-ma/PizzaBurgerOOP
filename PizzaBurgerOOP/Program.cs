@@ -8,18 +8,11 @@ namespace PizzaBurgerOOP
         static void Main(string[] args)
         {
             Console.WriteLine("Choose PizzaTopping");
-            string input = Console.ReadLine();
-            Pizza pizza = new Pizza();
-            Pizza myPizza = new Pizza();
-            PizzaTopping myPizzaTopping1 = pizza.AddPizzaTopping("Sausage");
-            PizzaTopping myPizzaTopping2 = pizza.AddPizzaTopping("Tomatoes");
-            myPizza.MyPizzaToppings.Add(myPizzaTopping1);
-            myPizza.MyPizzaToppings.Add(myPizzaTopping2);
-
-            foreach (var p in pizza.MyPizzaToppings)
-            {
-                Console.WriteLine(p.name);
-            }
+            Pizza p = new Pizza();
+            p.AddTopping("Mushroom", .01m);
+            p.AddTopping("Skittles", 5.5m);
+            Order o = new Order();
+            o.AddToOrder(p);
         }
     }
 }

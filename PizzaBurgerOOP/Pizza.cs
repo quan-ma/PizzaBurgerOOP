@@ -5,21 +5,24 @@ namespace PizzaBurgerOOP
 {
     public class Pizza
     {
-        public List<PizzaTopping> pizzaToppings = new List<PizzaTopping>();
+        private List<PizzaTopping> myPizzaToppings = new List<PizzaTopping>();
 
         public List<PizzaTopping> MyPizzaToppings { get; set; }
 
         public Pizza()
         {
-
+            MyPizzaToppings = myPizzaToppings;
         }
 
-        public PizzaTopping AddPizzaTopping(string pt)
+        public void AddTopping(string _name, decimal _price)
         {
-            PizzaTopping pizzaTopping = new PizzaTopping();
-            pizzaTopping.name = pt;
-            Console.WriteLine("Returning Pizza Topping");
-            return pizzaTopping;
+            PizzaTopping pt = new PizzaTopping()
+            {
+                name = _name,
+                price = _price
+            };
+
+            myPizzaToppings.Add(pt);
         }
 
 
