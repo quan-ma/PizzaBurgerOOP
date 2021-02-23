@@ -6,8 +6,16 @@ namespace PizzaBurgerOOP
     public class Pizza
     {
         private List<PizzaTopping> myPizzaToppings = new List<PizzaTopping>();
+        private decimal price = 10;
 
         public List<PizzaTopping> MyPizzaToppings { get; set; }
+        public decimal Price
+        {
+            get
+            {
+                return price;
+            }
+        }
 
         public Pizza()
         {
@@ -22,7 +30,7 @@ namespace PizzaBurgerOOP
                 price = _price
             };
 
-            myPizzaToppings.Add(pt);
+            MyPizzaToppings.Add(pt);
         }
 
 

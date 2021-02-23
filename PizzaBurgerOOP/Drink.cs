@@ -1,14 +1,13 @@
 ﻿using System;
 namespace PizzaBurgerOOP
 {
-    public class BurgerTopping
+    public class Drink
     {
-        public string name;
+        public char size;
         public decimal price;
 
-        public BurgerTopping()
+        public Drink()
         {
-
         }
     }
 }
