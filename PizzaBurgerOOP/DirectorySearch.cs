@@ -7,35 +7,60 @@ namespace PizzaBurgerOOP
 {
     public static class DirectorySearch
     {
-        static string directory = Directory.GetCurrentDirectory();
-        
+        static string myDirectory = Directory.GetCurrentDirectory();
+        static string directory = Path.GetFullPath(Path.Combine(myDirectory, "..", "..", "..", "Data"));
+        public static List<List<string>> fullMenuList = new List<List<string>>();
+        public static List<List<string>> pizzaToppingList = new List<List<string>>();
+        public static List<List<string>> burgerToppingList = new List<List<string>>();
+        public static List<List<string>> extraToppingList = new List<List<string>>();
 
-        public static void DisplayMenu()
+        static DirectorySearch()
         {
-            string menuItemsDirectory = Path.GetFullPath(Path.Combine(directory, "..", "..", "..", "Data", "MenuItems.csv"));
-            List<List<string>> fullMenuList = new List<List<string>>();
 
-            fullMenuList = ReadFile(fullMenuList, menuItemsDirectory);
+        }
+
+        public static string DisplayMenu(bool fileRead)
+        {
+            string menuItemsDirectory = Path.GetFullPath(Path.Combine(directory, "MenuItems.csv"));
+
+            if(!fileRead)
+            {
+                fullMenuList = ReadFile(fullMenuList, menuItemsDirectory);
+            }
 
             foreach (var fml in fullMenuList)
             {
                 Console.WriteLine($"{fml[0]} {fml[1]}");
             }
+            return Console.ReadLine();
         }
 
-        public static void DisplayPizzaToppings()
+        public static string DisplayPizzaToppings(bool fileRead)
         {
-            var pizzaDirectory = Path.GetFullPath(Path.Combine(directory, "..", "..", "..", "Data", "PizzaToppingItems.csv"));
+            var pizzaDirectory = Path.GetFullPath(Path.Combine(directory, "PizzaToppingItems.csv"));            
 
-            List<List<string>> pizzaToppingList = new List<List<string>>();
-
-            pizzaToppingList = ReadFile(pizzaToppingList, pizzaDirectory);
+            if(!fileRead) pizzaToppingList = ReadFile(pizzaToppingList, pizzaDirectory);
 
             foreach (var ptl in pizzaToppingList)
             {
                 decimal myPrice = decimal.Parse(ptl[2]);
                 Console.WriteLine($"{ptl[0]} {ptl[1]} {myPrice:C}");
             }
+            return Console.ReadLine();
+        }
+
+        public static string DisplayBurgerToppings(bool fileRead)
+        {
+            var burgerDirectory = Path.GetFullPath(Path.Combine(directory, "BurgerToppingItems.csv"));
+
+            if (!fileRead) burgerToppingList = ReadFile(burgerToppingList, burgerDirectory);
+
+            foreach (var btl in burgerToppingList)
+            {
+                decimal myPrice = decimal.Parse(btl[2]);
+                Console.WriteLine($"{btl[0]} {btl[1]} {myPrice:C}");
+            }
+            return Console.ReadLine();
         }
 
         public static List<List<string>> ReadFile(List<List<string>> fml, string path)
