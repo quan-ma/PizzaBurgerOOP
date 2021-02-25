@@ -8,11 +8,11 @@ namespace PizzaBurgerOOP
     public static class DirectorySearch
     {
         static string myDirectory = Directory.GetCurrentDirectory();
-        static string directory = Path.GetFullPath(Path.Combine(myDirectory, "..", "..", "..", "Data"));
+        static string directory = Path.GetFullPath(Path.Combine(myDirectory, "Data"));
         public static List<List<string>> fullMenuList = new List<List<string>>();
         public static List<List<string>> pizzaToppingList = new List<List<string>>();
         public static List<List<string>> burgerToppingList = new List<List<string>>();
-        public static List<List<string>> extraToppingList = new List<List<string>>();
+        public static List<List<string>> extraList = new List<List<string>>();
 
         static DirectorySearch()
         {
@@ -63,26 +63,39 @@ namespace PizzaBurgerOOP
             return Console.ReadLine();
         }
 
+        public static string DisplayExtras(bool fileRead)
+        {
+            var extraDirectory = Path.GetFullPath(Path.Combine(directory, "ExtraItems.csv"));
+
+            if (!fileRead) extraList = ReadFile(extraList, extraDirectory);
+
+            foreach(var el in extraList)
+            {
+                decimal myPrice = decimal.Parse(el[3]);
+                Console.WriteLine($"{el[0]} {el[1]}({el[2]}) {myPrice:C}");
+            }
+            return Console.ReadLine();
+        }
+
         public static List<List<string>> ReadFile(List<List<string>> fml, string path)
         {
-            using (var reader = new StreamReader(path))
+            using var reader = new StreamReader(path);
+            List<string> menuList = new List<string>();
+
+            while (!reader.EndOfStream)
             {
-                List<string> menuList = new List<string>();
+                var line = reader.ReadLine();
+                var values = line.Split(',');
 
-                while (!reader.EndOfStream)
+                foreach (var v in values)
                 {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-
-                    foreach (var v in values)
-                    {
-                        menuList.Add(v);
-                    }
-                    fml.Add(menuList.ToList());
-                    menuList.Clear();
+                    menuList.Add(v);
                 }
-                return fml;
+                fml.Add(menuList.ToList());
+                menuList.Clear();
             }
+            return fml;
+
         }
     }
 }

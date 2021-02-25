@@ -42,35 +42,35 @@ namespace PizzaBurgerOOP
             if (MyPizzas.Count > 0)
             {
                 Console.WriteLine("\n");
-                int pIndex = 0;
+                int index = 0;
                 foreach (var p in MyPizzas)
                 {
-                    subtotal += MyPizzas[pIndex].Price;
-                    Console.WriteLine($"Pizza {pIndex+1}, Price {MyPizzas.First().Price:C}");
+                    subtotal += MyPizzas[index].Price;
+                    Console.WriteLine($"Pizza {index+1}, Price {MyPizzas.First().Price:C}");
                     for (int i = 0; i < p.MyPizzaToppings.Count; i++)
                     {
 
                         Console.WriteLine($"\tTopping {p.MyPizzaToppings[i].name}, Price {p.MyPizzaToppings[i].price:C}");
                         subtotal += p.MyPizzaToppings[i].price;
                     }
-                    pIndex++;
+                    index++;
                 }
             }
 
             if (MyBurgers.Count > 0)
             {
                 Console.WriteLine("\n");
-                int pIndex = 0;
+                int index = 0;
                 foreach (var b in MyBurgers)
                 {
-                    Console.WriteLine($"Burger {pIndex + 1}, Price {MyBurgers.First().Price:C}");
-                    subtotal += MyBurgers[pIndex].Price;
+                    Console.WriteLine($"Burger {index + 1}, Price {MyBurgers.First().Price:C}");
+                    subtotal += MyBurgers[index].Price;
                     for (int i = 0; i < b.MyBurgerToppings.Count; i++)
                     {
                         Console.WriteLine($"\tTopping {b.MyBurgerToppings[i].name}, Price {b.MyBurgerToppings[i].price:C}");
                         subtotal += b.MyBurgerToppings[i].price;
                     }
-                    pIndex++;
+                    index++;
                 }
             }
 
