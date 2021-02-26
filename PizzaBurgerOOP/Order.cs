@@ -90,8 +90,9 @@ namespace PizzaBurgerOOP
                 {
                     foreach(var f in fries)
                     {
-                        var price = MyExtras.Where(ms => ms.Size == f.Size).Select(p => p.Price).Distinct().Single();
-                        System.Console.WriteLine($"({f.Quantity}) Fries, Size {f.Size}, Price {price:C}");
+                        var price = MyExtras.Where(ms => ms.Size == f.Size && ms.Item == "Fries")
+                        .Select(p => p.Price).Distinct().First();
+                        Console.WriteLine($"({f.Quantity}) {f.Size} fries {(price * f.Quantity):C}");
                         subtotal += price * f.Quantity;
                     }
                 }
@@ -108,8 +109,9 @@ namespace PizzaBurgerOOP
                 {
                     foreach(var d in drinks)
                     {
-                        var price = MyExtras.Where(ms => ms.Size == d.Size).Select(p => p.Price).Distinct().Single();
-                        System.Console.WriteLine($"({d.Quantity}) Drinks, Size {d.Size}, Price {price:C}");
+                        var price = MyExtras.Where(ms => ms.Size == d.Size && ms.Item == "Drink")
+                        .Select(p => p.Price).Distinct().First();
+                        Console.WriteLine($"({d.Quantity}) {d.Size} drinks {(price * d.Quantity):C}");
                         subtotal += price * d.Quantity;
                     }
                 }

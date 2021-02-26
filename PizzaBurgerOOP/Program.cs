@@ -62,23 +62,22 @@ namespace PizzaBurgerOOP
 
                 if(menuSelection.ToString() == ds.fullMenuList[2][0])
                 {
-                    Extra e = new Extra();
                     while(true)
                     {
+                        Extra e = new Extra();
                         int eSelection = Convert.ToInt32(ds.DisplayExtras(extraFile));
                         if(eSelection == 0)
                         {
-                            o.AddToOrder(e);
                             break;
                         }
 
                         e.Item = ds.extraList[eSelection - 1][1];
                         e.Size = ds.extraList[eSelection-1][2][0];
                         e.Price = decimal.Parse(ds.extraList[eSelection-1][3]);
+                        o.AddToOrder(e);
                         extraFile = true;
                     }
                 }
-
             }
 
             o.Total();

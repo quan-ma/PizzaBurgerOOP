@@ -30,7 +30,7 @@ namespace PizzaBurgerOOP
 
             foreach (var fml in fullMenuList)
             {
-                Console.WriteLine($"{fml[0]} {fml[1]}");
+                Console.WriteLine($"[{fml[0]}] {fml[1]}");
             }
             return Console.ReadLine();
         }
@@ -44,8 +44,9 @@ namespace PizzaBurgerOOP
             foreach (var ptl in pizzaToppingList)
             {
                 decimal myPrice = decimal.Parse(ptl[2]);
-                Console.WriteLine($"{ptl[0]} {ptl[1]} {myPrice:C}");
+                Console.WriteLine($"[{ptl[0]}] {ptl[1]} {myPrice:C}");
             }
+            System.Console.WriteLine("[0] Done");
             return Console.ReadLine();
         }
 
@@ -58,8 +59,9 @@ namespace PizzaBurgerOOP
             foreach (var btl in burgerToppingList)
             {
                 decimal myPrice = decimal.Parse(btl[2]);
-                Console.WriteLine($"{btl[0]} {btl[1]} {myPrice:C}");
+                Console.WriteLine($"[{btl[0]}] {btl[1]} {myPrice:C}");
             }
+            System.Console.WriteLine("[0] Done");
             return Console.ReadLine();
         }
 
@@ -72,8 +74,9 @@ namespace PizzaBurgerOOP
             foreach(var el in extraList)
             {
                 decimal myPrice = decimal.Parse(el[3]);
-                Console.WriteLine($"{el[0]} {el[1]}({el[2]}) {myPrice:C}");
+                Console.WriteLine($"[{el[0]}] {el[1]}({el[2]}) {myPrice:C}");
             }
+            System.Console.WriteLine("[0] Done");
             return Console.ReadLine();
         }
 
