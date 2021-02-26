@@ -19,7 +19,6 @@ namespace PizzaBurgerOOP
 
             while (true)
             {
-
                 int menuSelection = Convert.ToInt32(ds.DisplayMenu(menuFile));
                 if (menuSelection == 0)
                     break;
@@ -36,7 +35,8 @@ namespace PizzaBurgerOOP
                             break;
                         }
                             
-                        p.AddTopping(ds.pizzaToppingList[pToppingSelection - 1][1], decimal.Parse(ds.pizzaToppingList[pToppingSelection - 1][2]));
+                        p.AddTopping(ds.pizzaToppingList[pToppingSelection - 1][1], 
+                        decimal.Parse(ds.pizzaToppingList[pToppingSelection - 1][2]));
                         pizzaFile = true;
                     }
                 }
@@ -54,8 +54,28 @@ namespace PizzaBurgerOOP
                             break;
                         }
 
-                        b.AddTopping(ds.burgerToppingList[bToppingSelection - 1][1], decimal.Parse(ds.burgerToppingList[bToppingSelection - 1][2]));
+                        b.AddTopping(ds.burgerToppingList[bToppingSelection - 1][1], 
+                        decimal.Parse(ds.burgerToppingList[bToppingSelection - 1][2]));
                         burgerFile = true;
+                    }
+                }
+
+                if(menuSelection.ToString() == ds.fullMenuList[2][0])
+                {
+                    Extra e = new Extra();
+                    while(true)
+                    {
+                        int eSelection = Convert.ToInt32(ds.DisplayExtras(extraFile));
+                        if(eSelection == 0)
+                        {
+                            o.AddToOrder(e);
+                            break;
+                        }
+
+                        e.Item = ds.extraList[eSelection - 1][1];
+                        e.Size = ds.extraList[eSelection-1][2][0];
+                        e.Price = decimal.Parse(ds.extraList[eSelection-1][3]);
+                        extraFile = true;
                     }
                 }
 

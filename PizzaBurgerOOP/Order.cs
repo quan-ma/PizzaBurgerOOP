@@ -77,26 +77,43 @@ namespace PizzaBurgerOOP
             if (MyExtras.Count > 0)
             {
                 Console.WriteLine("\nExtras");
-                foreach(var e in MyExtras)
-                {
-                    if(e.Friess.Count > 0)
-                    {
-                        for (int i = 0; i < e.Friess.Count; i++)
-                        {
-                            Console.WriteLine($"Fries Size ({e.Friess[i].size}), Price {e.Friess[i].price:C}");
-                            subtotal += e.Friess[i].price;
-                        }
-                    }
 
-                    if(e.Drinks.Count > 0)
+                var fries = MyExtras.Where(f => f.Item == "Fries")
+                .GroupBy(s => s.Size)
+                .Select(grp => new
+                {
+                    Size = grp.Key,
+                    Quantity = grp.Count()
+                });
+
+                if(fries.Count() > 0)
+                {
+                    foreach(var f in fries)
                     {
-                        for(int i = 0; i < e.Drinks.Count; i++)
-                        {
-                            Console.WriteLine($"Drink Size ({e.Drinks[i].size}), Price {e.Drinks[i].price:C}");
-                            subtotal += e.Drinks[i].price;
-                        }
+                        var price = MyExtras.Where(ms => ms.Size == f.Size).Select(p => p.Price).Distinct().Single();
+                        System.Console.WriteLine($"({f.Quantity}) Fries, Size {f.Size}, Price {price:C}");
+                        subtotal += price * f.Quantity;
                     }
                 }
+
+                var drinks = MyExtras.Where(d => d.Item == "Drink")
+                .GroupBy(s => s.Size)
+                .Select(grp => new
+                {
+                    Size = grp.Key,
+                    Quantity = grp.Count()
+                });
+
+                if(drinks.Count() > 0)
+                {
+                    foreach(var d in drinks)
+                    {
+                        var price = MyExtras.Where(ms => ms.Size == d.Size).Select(p => p.Price).Distinct().Single();
+                        System.Console.WriteLine($"({d.Quantity}) Drinks, Size {d.Size}, Price {price:C}");
+                        subtotal += price * d.Quantity;
+                    }
+                }
+
             }
 
             Console.WriteLine($"\nYour subtotal is {subtotal:C}");

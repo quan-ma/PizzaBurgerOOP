@@ -5,36 +5,19 @@ namespace PizzaBurgerOOP
 {
     public class Extra
     {
-        private List<Fries> friess = new List<Fries>();
-        private List<Drink> drinks = new List<Drink>();
-
-        public List<Fries> Friess { get; set; }
-        public List<Drink> Drinks { get; set; }
+        private string item;
+        private char size;
+        private decimal price;
+        public string Item {get;set;}
+        public char Size {get;set;}
+        public decimal Price {get;set;}
 
         public Extra()
         {
-            Friess = friess;
-            Drinks = drinks;
+            Item = item;
+            Size = size;
+            Price = price;
         }
 
-        public void AddFries(char _size, decimal _price)
-        {
-            Fries f = new Fries()
-            {
-                size = _size,
-                price = _price
-            };
-            Friess.Add(f);
-        }
-
-        public void AddDrink(char _size, decimal _price)
-        {
-            Drink d = new Drink()
-            {
-                size = _size,
-                price = _price
-            };
-            Drinks.Add(d);
-        }
     }
 }
