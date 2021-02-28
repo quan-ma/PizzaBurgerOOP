@@ -19,12 +19,12 @@ namespace PizzaBurgerOOP
 
             while (true)
             {
-                int menuSelection = Convert.ToInt32(ds.DisplayMenu(menuFile));
+                string menuSelection = ds.DisplayMenu(menuFile);
                 menuFile = true;
-                if (menuSelection == 0)
+                if (menuSelection == "0")
                     break;
 
-                if (menuSelection.ToString() == ds.fullMenuList[0][0])
+                if (menuSelection == ds.fullMenuList[0][0])
                 {
                     Pizza p = new Pizza();
                     while (true)
@@ -41,12 +41,12 @@ namespace PizzaBurgerOOP
                         decimal.Parse(ds.pizzaToppingList[pToppingSelection - 1][2]));
                         foreach (var pt in p.MyPizzaToppings)
                         {
-                            System.Console.WriteLine($"{pt.name} {pt.price}");
+                            System.Console.WriteLine($"{pt.name} {pt.price:C}");
                         }
                     }
                 }
 
-                if (menuSelection.ToString() == ds.fullMenuList[1][0])
+                if (menuSelection == ds.fullMenuList[1][0])
                 {
                     Burger b = new Burger();
                     while (true)
@@ -64,7 +64,7 @@ namespace PizzaBurgerOOP
                     }
                 }
 
-                if (menuSelection.ToString() == ds.fullMenuList[2][0])
+                if (menuSelection == ds.fullMenuList[2][0])
                 {
                     while (true)
                     {
