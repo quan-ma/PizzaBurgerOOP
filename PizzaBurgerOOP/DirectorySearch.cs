@@ -106,5 +106,10 @@ namespace PizzaBurgerOOP
             return fml;
 
         }
+
+        public static void InvalidInput()
+        {
+            System.Console.WriteLine("Invalid Input, Try Again!!");
+        }
     }
 }
