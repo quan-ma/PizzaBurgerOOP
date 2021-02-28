@@ -23,14 +23,20 @@ namespace PizzaBurgerOOP
         {
             string menuItemsDirectory = Path.GetFullPath(Path.Combine(directory, "MenuItems.csv"));
 
-            if(!fileRead)
-            {
-                fullMenuList = ReadFile(fullMenuList, menuItemsDirectory);
-            }
+            if(!fileRead) fullMenuList = ReadFile(fullMenuList, menuItemsDirectory);
 
             foreach (var fml in fullMenuList)
             {
-                Console.WriteLine($"[{fml[0]}] {fml[1]}");
+                decimal price;
+                bool success = decimal.TryParse(fml[2], out price);
+                if(success)
+                {
+                    Console.WriteLine($"[{fml[0]}] {fml[1]} {price:C}");
+                }
+                else
+                {
+                    Console.WriteLine($"[{fml[0]}] {fml[1]}");
+                }
             }
             return Console.ReadLine();
         }

@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ds = PizzaBurgerOOP.DirectorySearch;
 
 namespace PizzaBurgerOOP
 {
@@ -13,7 +13,7 @@ namespace PizzaBurgerOOP
         {
             get
             {
-                return price;
+                return decimal.Parse(ds.fullMenuList[0][2]);
             }
         }
 
