@@ -5,7 +5,7 @@ namespace PizzaBurgerOOP
 {
     public class Burger
     {
-        private decimal price = 7;
+        private decimal price;
         private List<BurgerTopping> myBurgerToppings = new List<BurgerTopping>();
         public List<BurgerTopping> MyBurgerToppings { get; set; }
 

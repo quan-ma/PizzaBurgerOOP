@@ -20,66 +20,69 @@ namespace PizzaBurgerOOP
             while (true)
             {
                 int menuSelection = Convert.ToInt32(ds.DisplayMenu(menuFile));
+                menuFile = true;
                 if (menuSelection == 0)
                     break;
 
-                if(menuSelection.ToString() == ds.fullMenuList[0][0])
+                if (menuSelection.ToString() == ds.fullMenuList[0][0])
                 {
                     Pizza p = new Pizza();
                     while (true)
                     {
                         int pToppingSelection = Convert.ToInt32(ds.DisplayPizzaToppings(pizzaFile));
+                        pizzaFile = true;
                         if (pToppingSelection == 0)
                         {
                             o.AddToOrder(p);
                             break;
                         }
-                            
-                        p.AddTopping(ds.pizzaToppingList[pToppingSelection - 1][1], 
+
+                        p.AddTopping(ds.pizzaToppingList[pToppingSelection - 1][1],
                         decimal.Parse(ds.pizzaToppingList[pToppingSelection - 1][2]));
-                        pizzaFile = true;
+                        foreach (var pt in p.MyPizzaToppings)
+                        {
+                            System.Console.WriteLine($"{pt.name} {pt.price}");
+                        }
                     }
                 }
-                menuFile = true;
 
-                if(menuSelection.ToString()== ds.fullMenuList[1][0])
+                if (menuSelection.ToString() == ds.fullMenuList[1][0])
                 {
                     Burger b = new Burger();
-                    while(true)
+                    while (true)
                     {
                         int bToppingSelection = Convert.ToInt32(ds.DisplayBurgerToppings(burgerFile));
+                        burgerFile = true;
                         if (bToppingSelection == 0)
                         {
                             o.AddToOrder(b);
                             break;
                         }
 
-                        b.AddTopping(ds.burgerToppingList[bToppingSelection - 1][1], 
+                        b.AddTopping(ds.burgerToppingList[bToppingSelection - 1][1],
                         decimal.Parse(ds.burgerToppingList[bToppingSelection - 1][2]));
-                        burgerFile = true;
                     }
                 }
 
-                if(menuSelection.ToString() == ds.fullMenuList[2][0])
+                if (menuSelection.ToString() == ds.fullMenuList[2][0])
                 {
-                    while(true)
+                    while (true)
                     {
                         Extra e = new Extra();
                         int eSelection = Convert.ToInt32(ds.DisplayExtras(extraFile));
-                        if(eSelection == 0)
+                        extraFile = true;
+                        if (eSelection == 0)
                         {
                             break;
                         }
 
                         e.Item = ds.extraList[eSelection - 1][1];
-                        e.Size = ds.extraList[eSelection-1][2][0];
-                        e.Price = decimal.Parse(ds.extraList[eSelection-1][3]);
+                        e.Size = ds.extraList[eSelection - 1][2][0];
+                        e.Price = decimal.Parse(ds.extraList[eSelection - 1][3]);
                         o.AddToOrder(e);
-                        extraFile = true;
                     }
                 }
             }
-
             o.Total();
         }
     }
